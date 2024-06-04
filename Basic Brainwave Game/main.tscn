@@ -1,0 +1,133 @@
+[gd_scene load_steps=14 format=3 uid="uid://uip4460dypvx"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_ux3l1"]
+[ext_resource type="Texture2D" uid="uid://osvkn03jtshi" path="res://Sprites/Sisyphus.png" id="2_v3jkj"]
+[ext_resource type="Texture2D" uid="uid://rjtgqigfpabf" path="res://Sprites/Rock.png" id="3_kbkcv"]
+[ext_resource type="Texture2D" uid="uid://bofgt2pr083gx" path="res://Sprites/Ground.png" id="5_dvjtd"]
+[ext_resource type="Script" path="res://brain_port.gd" id="6_23dv3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sjea7"]
+radius = 67.42
+height = 292.76
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrjbm"]
+atlas = ExtResource("2_v3jkj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81c0r"]
+atlas = ExtResource("2_v3jkj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elnel"]
+atlas = ExtResource("2_v3jkj")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyrs2"]
+atlas = ExtResource("2_v3jkj")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o0ap0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrjbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81c0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elnel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyrs2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0s42q"]
+radius = 50.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_skast"]
+size = Vector2(5079.31, 208)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(-200, -172)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(888, 535)
+script = ExtResource("1_ux3l1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(4, -11)
+shape = SubResource("CapsuleShape2D_sjea7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+texture_filter = 1
+position = Vector2(42, -3.99999)
+scale = Vector2(10.438, 9.938)
+sprite_frames = SubResource("SpriteFrames_o0ap0")
+autoplay = "default"
+frame_progress = 0.181401
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+
+[node name="brain_port" type="Node" parent="CharacterBody2D"]
+script = ExtResource("6_23dv3")
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+position = Vector2(1020, 551)
+script = ExtResource("1_ux3l1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D2"]
+position = Vector2(1, -30)
+shape = SubResource("CircleShape2D_0s42q")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D2"]
+texture_filter = 1
+position = Vector2(20, -44)
+scale = Vector2(5.4375, 5.34375)
+texture = ExtResource("3_kbkcv")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(946, 854)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1333.23, -1096.06)
+rotation = -0.663225
+shape = SubResource("RectangleShape2D_skast")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
+texture_filter = 1
+position = Vector2(743.451, -29.1804)
+scale = Vector2(30.3125, 29.6422)
+texture = ExtResource("5_dvjtd")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture_filter = 1
+position = Vector2(-338, 169)
+rotation = -0.663225
+scale = Vector2(30.3125, 29.6422)
+texture = ExtResource("5_dvjtd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1356, 440)
+rotation = -0.663225
+scale = Vector2(30.3125, 29.6422)
+texture = ExtResource("5_dvjtd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2114, -158)
+rotation = -0.663225
+scale = Vector2(30.3125, 29.6422)
+texture = ExtResource("5_dvjtd")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(3598, -1318)
+rotation = -0.663225
+scale = Vector2(30.3125, 29.6422)
+texture = ExtResource("5_dvjtd")
